@@ -13,6 +13,14 @@ let plugins = [
 ];
 
 if(process.env.NODE_ENV == 'production'){
+	
+	// separa o código de terceiros em um vendor, o bundle somete é para código
+	// proprietário
+	plugins.push(new webpack.optimize.CommonsChunkPlugin({
+		name:"vendor",
+		filename:"vendor.bundle.js"
+	}));
+	plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
 	plugins.push(new babili());
 	plugins.push(new optimizePlugin({
 		cssProcessor:require("cssnano"),
@@ -24,11 +32,14 @@ if(process.env.NODE_ENV == 'production'){
 }
 
 module.exports = {
-	entry:"./app-src/app.js",
+	entry: {
+        app: './app-src/app.js',
+        vendor: ['jquery', 'bootstrap', 'reflect-metadata']
+    },
 	output:{
 		filename:"bundle.js",
 		path:path.resolve(__dirname, "dist"),
-                publicPath:'dist'
+                publicPath:"dist"
 	},
 	plugins:plugins,
 	module:{

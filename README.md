@@ -1,5 +1,8 @@
-./client 
+### Client
 
+Instalando dependências para executar o client e reproduzir as aulas do curso de webpack da alura.
+
+```sh
 npm install webpack-dev-server@2.5.1 --save-dev
 npm install css-loader@0.28.4  --save-dev
 npm install style-loader@0.18.2  --save-dev
@@ -9,4 +12,14 @@ npm install extract-text-webpack-plugin@3.0.0 --save-dev
 npm install optimize-css-assets-webpack-plugin@2.0.0 --save-dev
 npm install cssnano@3.10.0 --save-dev
 npm install jquery@3.2.1 --save-dev
+npm install bootstrap --save-dev
+npm run build-prod
+```
 
+### Server
+
+Iniciando o servidor.
+
+```sh
+$ node server.js
+```
